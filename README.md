@@ -11,9 +11,4 @@ A Somali Osmaniya script converter. Type Latin Somali text and instantly get it 
 - Input: `hooyo`
 - Output: `𐒗𐒡𐒖𐒡𐒑`
 
----
 
-### 🛠 Built With
-- HTML + CSS + JavaScript
-- Google Fonts (Noto Sans Osmaniya)
-- Hosted with GitHub Pages
