@@ -3,68 +3,102 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>SooDhexGali - Osmaniya Keyboard</title>
+  <title>soo dhawoow - Osmaniya Keyboard</title>
   <style>
     body {
       font-family: 'Segoe UI', Arial, sans-serif;
       padding: 20px;
-      background: #f4f4f4;
-      color: #333;
+      background: #000000;
+      color: #A1A1A1;
       text-align: center;
+      margin: 0;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
     }
-    h1 { color: #007BFF; }
-    textarea {
+
+    .header {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 20px;
+    }
+
+    .logo {
+      width: 100px;
+      height: auto;
+      margin-right: 10px;
+    }
+
+    h1 {
+      color: #A1A1A1;
+      font-size: clamp(24px, 5vw, 36px);
+      margin: 0;
+      font-weight: 600;
+    }
+
+    p {
+      color: #CCCCCC;
+      font-size: clamp(14px, 4vw, 18px);
+      max-width: 600px;
+      margin: 10px auto 20px;
+    }
+
+    input, textarea {
       width: 90%;
       max-width: 600px;
-      height: 100px;
-      margin: 10px;
-      padding: 10px;
-      font-size: 18px;
-      border: 1px solid #ccc;
-      border-radius: 8px;
+      margin: 15px auto;
+      padding: 14px;
+      font-size: clamp(16px, 4.5vw, 20px);
+      border: 1px solid #555;
+      border-radius: 10px;
+      background: #222;
+      color: #FFF;
+      display: block;
     }
+
     #output {
       font-family: 'Noto Sans Osmaniya', 'Segoe UI', sans-serif;
-      font-size: 28px;
-      background: #e8f4f8;
+      font-size: clamp(28px, 6vw, 40px);
+      background: #323232;
+      color: #FFFFFF;
+      line-height: 1.4;
     }
+
     button {
-      padding: 10px 20px;
-      font-size: 16px;
-      margin: 10px;
-      background: #007BFF;
+      padding: 14px 28px;
+      font-size: clamp(16px, 4vw, 18px);
+      margin: 20px 10px;
+      background: #464646;
       color: white;
       border: none;
-      border-radius: 6px;
+      border-radius: 8px;
       cursor: pointer;
+      transition: background 0.3s;
     }
-    button:hover { background: #0056b3; }
-    .help {
-      margin: 20px auto;
-      max-width: 600px;
-      font-size: 14px;
-      color: #555;
-      line-height: 1.5;
+
+    button:hover {
+      background: #6B6B6B;
     }
+
     @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Osmaniya&display=swap');
   </style>
 </head>
 <body>
-  <h1>SooDhexGali ⌨️</h1>
-  <p><strong>Osmaniya Keyboard</strong> – Type Somali in the Osmaniya script!</p>
-
-  <p><input type="text" id="input" placeholder="Type in Latin Somali..." oninput="convert()" /></p>
-  <textarea id="output" readonly></textarea>
-  <br />
-  <button onclick="copyText()">Copy Osmaniya Text</button>
-
-  <div class="help">
-    <p><strong>Examples:</strong></p>
-    <p>salaam → 𐒈𐒖𐒐𐒖𐒖𐒑</p>
-    <p>waa xabsi → 𐒓𐒖𐒖 𐒄𐒖𐒍𐒈𐒟</p>
-    <p>dhaktoor → lymp; 𐒤𐒖𐒝𐒎𐒡𐒡𐒡𐒒</p>
-    <p><small>Uses <a href="https://fonts.google.com/noto/fonts?query=osmaniya" target="_blank">Noto Sans Osmaniya</a> font for display.</small></p>
+  <div class="header">
+    <img src="somali-flag-map.png" alt="Sawirka Calanka Soomaaliya" class="logo" loading="lazy">
+    <h1>soo dhawoow</h1>
   </div>
+
+  <p>Furahaanka: hooyo, aabe, seetahay...</p>
+
+  <input type="text" id="input" placeholder="Tuuri erayga..." oninput="convert()" autocomplete="off" autocapitalize="off" />
+
+  <textarea id="output" placeholder="𐒓𐒖𐒐𐒖𐒖𐒑" readonly></textarea>
+
+  <button onclick="copyText()">Kopka Osmaniya</button>
 
   <script>
     const mapping = {
@@ -78,29 +112,43 @@
     };
 
     function convert() {
-      let text = document.getElementById('input').value.toLowerCase();
-      let result = '';
+      const input = document.getElementById('input').value.toLowerCase();
+      let output = '';
+      let i = 0;
 
-      for (let i = 0; i < text.length; i++) {
-        if (i < text.length - 1) {
-          let twoChar = text.slice(i, i+2);
-          if (mapping[twoChar]) {
-            result += mapping[twoChar];
-            i++;
-            continue;
-          }
+      while (i < input.length) {
+        const char = input[i];
+        const nextChar = input[i + 1];
+
+        if (char === 's' && nextChar === 'h') {
+          output += mapping['sh'];
+          i += 2;
+        } else if (char === 'd' && nextChar === 'h') {
+          output += mapping['dh'];
+          i += 2;
+        } else if (char === 't' && nextChar === 'h') {
+          output += mapping['th'];
+          i += 2;
+        } else if (char === 'a' && nextChar === 'a') {
+          output += mapping['aa'];
+          i += 2;
+        } else if (char === 'o' && nextChar === 'o') {
+          output += mapping['oo'];
+          i += 2;
+        } else {
+          output += mapping[char] || char;
+          i += 1;
         }
-        result += mapping[text[i]] || text[i];
       }
 
-      document.getElementById('output').value = result;
+      document.getElementById('output').value = output;
     }
 
     function copyText() {
-      let output = document.getElementById('output');
-      output.select();
-      document.execCommand('copy');
-      alert('Copied to clipboard: ' + output.value);
+      const textarea = document.getElementById('output');
+      navigator.clipboard.writeText(textarea.value)
+        .then(() => alert('Kopkiyey! (Copied!)'))
+        .catch(() => alert('Waan ku guuldaraystay koobiyeenta.'));
     }
   </script>
 </body>
