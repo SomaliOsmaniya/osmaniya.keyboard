@@ -73,6 +73,8 @@
       font-size: 2rem;
       background: #1a1a1a;
       color: #fefefe;
+      resize: vertical;
+      min-height: 100px;
     }
     button {
       background: #f28c28;
@@ -114,6 +116,7 @@
       <p>Example: Type "soo dhawoow" to see the conversion.</p>
     </div>
   </div>
+
   <script>
     const mapping = {
       'a': '𐒖', 'b': '𐒍', 't': '𐒎', 'j': '𐒏', 'x': '𐒄',
@@ -129,29 +132,24 @@
       const input = document.getElementById('input').value.toLowerCase();
       let output = '';
       let i = 0;
+
       while (i < input.length) {
-        const char = input[i];
-        const nextChar = input[i + 1];
-        if (char === 's' && nextChar === 'h') {
-          output += mapping['sh'];
+        const twoChars = input.substring(i, i + 2);
+        const oneChar = input[i];
+
+        // Check for multi-char mappings first
+        if (mapping[twoChars]) {
+          output += mapping[twoChars];
           i += 2;
-        } else if (char === 'd' && nextChar === 'h') {
-          output += mapping['dh'];
-          i += 2;
-        } else if (char === 't' && nextChar === 'h') {
-          output += mapping['th'];
-          i += 2;
-        } else if (char === 'a' && nextChar === 'a') {
-          output += mapping['aa'];
-          i += 2;
-        } else if (char === 'o' && nextChar === 'o') {
-          output += mapping['oo'];
-          i += 2;
+        } else if (mapping[oneChar]) {
+          output += mapping[oneChar];
+          i += 1;
         } else {
-          output += mapping[char] || char;
+          output += oneChar;
           i += 1;
         }
       }
+
       document.getElementById('output').value = output;
     }
 
@@ -169,4 +167,3 @@
   </script>
 </body>
 </html>
-
