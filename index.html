@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="so">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>SooDhexGali - Osmaniya Keyboard</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Arial, sans-serif;
+      padding: 20px;
+      background: #f4f4f4;
+      color: #333;
+      text-align: center;
+    }
+    h1 { color: #007BFF; }
+    textarea {
+      width: 90%;
+      max-width: 600px;
+      height: 100px;
+      margin: 10px;
+      padding: 10px;
+      font-size: 18px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+    }
+    #output {
+      font-family: 'Noto Sans Osmaniya', 'Segoe UI', sans-serif;
+      font-size: 28px;
+      background: #e8f4f8;
+    }
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+      margin: 10px;
+      background: #007BFF;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+    button:hover { background: #0056b3; }
+    .help {
+      margin: 20px auto;
+      max-width: 600px;
+      font-size: 14px;
+      color: #555;
+      line-height: 1.5;
+    }
+    @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Osmaniya&display=swap');
+  </style>
+</head>
+<body>
+  <h1>SooDhexGali ⌨️</h1>
+  <p><strong>Osmaniya Keyboard</strong> – Type Somali in the Osmaniya script!</p>
+
+  <p><input type="text" id="input" placeholder="Type in Latin Somali..." oninput="convert()" /></p>
+  <textarea id="output" readonly></textarea>
+  <br />
+  <button onclick="copyText()">Copy Osmaniya Text</button>
+
+  <div class="help">
+    <p><strong>Examples:</strong></p>
+    <p>salaam → 𐒈𐒖𐒐𐒖𐒖𐒑</p>
+    <p>waa xabsi → 𐒓𐒖𐒖 𐒄𐒖𐒍𐒈𐒟</p>
+    <p>dhaktoor → lymp; 𐒤𐒖𐒝𐒎𐒡𐒡𐒡𐒒</p>
+    <p><small>Uses <a href="https://fonts.google.com/noto/fonts?query=osmaniya" target="_blank">Noto Sans Osmaniya</a> font for display.</small></p>
+  </div>
+
+  <script>
+    const mapping = {
+      'a': '𐒖', 'b': '𐒍', 't': '𐒎', 'j': '𐒏', 'x': '𐒄',
+      'kh': '𐒅', 'd': '𐒔', 'r': '𐒒', 's': '𐒈', 'sh': '𐒑',
+      'g': '𐒐', 'f': '𐒓', 'q': '𐒕', 'c': '𐒋', 'h': '𐒗',
+      'y': '𐒘', 'm': '𐒙', 'n': '𐒚', 'w': '𐒛', 'l': '𐒜',
+      'k': '𐒝', 'e': '𐒞', 'i': '𐒟', 'u': '𐒠', 'o': '𐒡',
+      'v': '𐒢', 'z': '𐒣', 'dh': '𐒤', 'th': '𐒥', "'": '𐒦',
+      'aa': '𐒧', 'oo': '𐒨'
+    };
+
+    function convert() {
+      let text = document.getElementById('input').value.toLowerCase();
+      let result = '';
+
+      for (let i = 0; i < text.length; i++) {
+        if (i < text.length - 1) {
+          let twoChar = text.slice(i, i+2);
+          if (mapping[twoChar]) {
+            result += mapping[twoChar];
+            i++;
+            continue;
+          }
+        }
+        result += mapping[text[i]] || text[i];
+      }
+
+      document.getElementById('output').value = result;
+    }
+
+    function copyText() {
+      let output = document.getElementById('output');
+      output.select();
+      document.execCommand('copy');
+      alert('Copied to clipboard: ' + output.value);
+    }
+  </script>
+</body>
+</html>
