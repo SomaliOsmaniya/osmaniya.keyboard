@@ -1,12 +1,11 @@
 <!DOCTYPE html>
 <html lang="so">
 <head>
-  <meta charset="UTF-8"width=device-width, initial-scale=1.0" />
-  <meta name="viewport" content=/>
-  <title>soo dhawoow - Osmaniya Keyboard</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Osmaniya Keyboard</title>
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Osmaniya&display=swap');
-
     body {
       font-family: 'Segoe UI', Arial, sans-serif;
       background-color: #000;
@@ -20,8 +19,6 @@
       align-items: center;
       text-align: center;
     }
-
-    /* Orange corner */
     .corner {
       position: absolute;
       top: 0;
@@ -29,42 +26,36 @@
       width: 60px;
       height: 60px;
     }
-
     .corner::before,
     .corner::after {
       content: '';
       position: absolute;
-      background: #f28c28; /* Orange */
+      background: #f28c28;
     }
-
     .corner::before {
       width: 30px;
       height: 5px;
       top: 0;
       left: 0;
     }
-
     .corner::after {
       width: 5px;
       height: 30px;
       top: 0;
       left: 0;
     }
-
     h1 {
       font-size: 2.5rem;
       margin-bottom: 0.5em;
       color: #f28c28;
       text-transform: uppercase;
     }
-
     p {
       color: #ccc;
       font-size: 1rem;
       max-width: 600px;
       margin: 10px auto 20px;
     }
-
     input, textarea {
       width: 90%;
       max-width: 600px;
@@ -77,14 +68,14 @@
       font-size: 1.2rem;
       display: block;
     }
-
     #output {
       font-family: 'Noto Sans Osmaniya', 'Segoe UI', sans-serif;
       font-size: 2rem;
       background: #1a1a1a;
       color: #fefefe;
+      resize: vertical;
+      min-height: 100px;
     }
-
     button {
       background: #f28c28;
       color: #000;
@@ -93,42 +84,97 @@
       padding: 12px 24px;
       font-size: 1rem;
       cursor: pointer;
-      margin-top: 20px;
+      margin: 10px;
       transition: background 0.3s;
     }
-
     button:hover {
       background: #ffa94d;
     }
-
     .container {
       padding: 20px;
       position: relative;
       z-index: 1;
     }
+    .button-group {
+      display: flex;
+      justify-content: center;
+    }
+    .instructions {
+      max-width: 800px;
+      text-align: left;
+      margin: 30px auto;
+      padding: 20px;
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 8px;
+    }
+    .instructions h2 {
+      color: #f28c28;
+      margin-top: 0;
+    }
+    .instructions p {
+      margin-bottom: 15px;
+    }
+    .bilingual {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+    }
+    .bilingual p {
+      flex: 1 1 45%;
+      min-width: 300px;
+    }
   </style>
 </head>
 <body>
-  <!-- Top Left Orange Corner -->
   <div class="corner"></div>
-
   <div class="container">
-    <h1>soo dhawoow</h1>
-    <p></p>
-
-    <input type="text" id="input" placeholder="Tuuri erayga..." oninput="convert()" autocomplete="off" autocapitalize="off" />
+    <h1>Soo Dhawoow</h1>
+    <p>Osmaniya Keyboard - Qalabka Farta Osmaniya</p>
+    <input type="text" id="input" placeholder="Tuuri erayga..." oninput="convert()" autocomplete="off" autocapitalize="off">
     <textarea id="output" placeholder="𐒓𐒖𐒐𐒖𐒖𐒑" readonly></textarea>
-    <button onclick="copyText()">copy Osmaniya</button>
+    <div class="button-group">
+      <button onclick="copyText()">Copy Osmaniya</button>
+      <button onclick="clearFields()">Clear</button>
+    </div>
+    
+    <div class="instructions">
+      <h2>How to Write in Somali Using the Osmanya Alphabet</h2>
+      <div class="bilingual">
+        <p>The Osmanya alphabet is a unique script created specifically for the Somali language. It closely matches Somali sounds, making it easier to write and read Somali words.</p>
+        <p>Farta Osmanya waa qoraal gaar ah oo loogu talagalay af-Soomaaliga. Waxay si fiican ugu dhowdahay dhawaaqyada afka Soomaaliga, taasoo ka dhigaysa mid sahlan in erayada Soomaaliga la qoro oo la akhriyo.</p>
+      </div>
+      
+      <h2>How to Use This Tool:</h2>
+      <div class="bilingual">
+        <p>1. Type any Somali word or phrase into the box labeled "Tuuri erayga..."</p>
+        <p>1. Geli eray ama jumlad Soomaali ah sanduuqa qoraalka ee calaamadsan "Tuuri erayga..."</p>
+        
+        <p>2. The tool will automatically convert your Somali text into the Osmanya script in the box below.</p>
+        <p>2. Qalabku si toos ah ayuu u beddeli doonaa qoraalkaaga Soomaali farta Osmanya ee sanduuqa hoose.</p>
+        
+        <p>3. To copy the Osmanya text, click the "Copy Osmania" button.</p>
+        <p>3. Si aad u koobiyeyn karto qoraalka Osmanya, guji batoonka "Copy Osmania".</p>
+        
+        <p>4. To clear the text and start fresh, click the "Clear" button.</p>
+        <p>4. Si aad qoraalka u nadiifiso oo aad markale bilowdo, guji batoonka "Clear".</p>
+      </div>
+      
+      <h2>Example:</h2>
+      <div class="bilingual">
+        <p>Typing "soo dhawow" (which means "welcome") will display the phrase in Osmanya letters.</p>
+        <p>Markaad qorto "soo dhawow" (oo macnaheedu yahay "soo dhawoow") waxaa laguu soo bandhigi doonaa qoraalkaas oo ku qoran farta Osmanya.</p>
+      </div>
+    </div>
   </div>
 
   <script>
     const mapping = {
-      'a': '𐒖', 'b': '𐒍', 't': '𐒎', 'j': '𐒏', 'x': '𐒄',
-      'kh': '𐒅', 'd': '𐒔', 'r': '𐒒', 's': '𐒈', 'sh': '𐒑',
-      'g': '𐒐', 'f': '𐒓', 'q': '𐒕', 'c': '𐒋', 'h': '𐒗',
-      'y': '𐒘', 'm': '𐒙', 'n': '𐒚', 'w': '𐒛', 'l': '𐒜',
-      'k': '𐒝', 'e': '𐒞', 'i': '𐒟', 'u': '𐒠', 'o': '𐒡',
-      'v': '𐒢', 'z': '𐒣', 'dh': '𐒤', 'th': '𐒥', "'": '𐒦',
+      'a': '𐒖', 'b': '𐒍', 't': '𐒎', 'j': '𐒏', 'x': '𐒄', 
+      'kh': '𐒅', 'd': '𐒔', 'r': '𐒒', 's': '𐒈', 'sh': '𐒑', 
+      'g': '𐒐', 'f': '𐒓', 'q': '𐒕', 'c': '𐒋', 'h': '𐒗', 
+      'y': '𐒘', 'm': '𐒙', 'n': '𐒚', 'w': '𐒛', 'l': '𐒜', 
+      'k': '𐒝', 'e': '𐒞', 'i': '𐒟', 'u': '𐒠', 'o': '𐒡', 
+      'v': '𐒢', 'z': '𐒣', 'dh': '𐒤', 'th': '𐒥', "'": '𐒦', 
       'aa': '𐒧', 'oo': '𐒨'
     };
 
@@ -138,26 +184,23 @@
       let i = 0;
 
       while (i < input.length) {
-        const char = input[i];
-        const nextChar = input[i + 1];
+        // Check for three-character combinations first
+        const threeChars = input.substring(i, i + 3);
+        // Then check for two-character combinations
+        const twoChars = input.substring(i, i + 2);
+        const oneChar = input[i];
 
-        if (char === 's' && nextChar === 'h') {
-          output += mapping['sh'];
+        if (mapping[threeChars]) {
+          output += mapping[threeChars];
+          i += 3;
+        } else if (mapping[twoChars]) {
+          output += mapping[twoChars];
           i += 2;
-        } else if (char === 'd' && nextChar === 'h') {
-          output += mapping['dh'];
-          i += 2;
-        } else if (char === 't' && nextChar === 'h') {
-          output += mapping['th'];
-          i += 2;
-        } else if (char === 'a' && nextChar === 'a') {
-          output += mapping['aa'];
-          i += 2;
-        } else if (char === 'o' && nextChar === 'o') {
-          output += mapping['oo'];
-          i += 2;
+        } else if (mapping[oneChar]) {
+          output += mapping[oneChar];
+          i += 1;
         } else {
-          output += mapping[char] || char;
+          output += oneChar;
           i += 1;
         }
       }
@@ -167,10 +210,71 @@
 
     function copyText() {
       const textarea = document.getElementById('output');
-      navigator.clipboard.writeText(textarea.value)
-        .then(() => alert('Kopkiyey! (Copied!)'))
-        .catch(() => alert('Waan ku guuldaraystay koobiyeenta.'));
+      if (textarea.value.trim() === '') {
+        alert('Nothing to copy. Please type some text first.');
+        return;
+      }
+      
+      // Fallback for browsers that don't support clipboard API
+      try {
+        // Try to use the clipboard API
+        navigator.clipboard.writeText(textarea.value)
+          .then(() => showCopyMessage())
+          .catch(err => fallbackCopy(textarea));
+      } catch (err) {
+        // If clipboard API is not available, use fallback
+        fallbackCopy(textarea);
+      }
     }
+    
+    function showCopyMessage() {
+      // Create a temporary element for the success message
+      const msg = document.createElement('div');
+      msg.textContent = 'Copied!';
+      msg.style.position = 'fixed';
+      msg.style.top = '20px';
+      msg.style.left = '50%';
+      msg.style.transform = 'translateX(-50%)';
+      msg.style.padding = '10px 20px';
+      msg.style.background = '#f28c28';
+      msg.style.color = '#000';
+      msg.style.borderRadius = '4px';
+      msg.style.zIndex = '1000';
+      document.body.appendChild(msg);
+      
+      // Remove the message after 2 seconds
+      setTimeout(() => {
+        document.body.removeChild(msg);
+      }, 2000);
+    }
+    
+    function fallbackCopy(textarea) {
+      // Fallback method using selection and execCommand
+      textarea.select();
+      try {
+        const successful = document.execCommand('copy');
+        if (successful) {
+          showCopyMessage();
+        } else {
+          alert('Failed to copy. Please try again.');
+        }
+      } catch (err) {
+        alert('Failed to copy. Please try again.');
+      }
+      // Deselect the text
+      window.getSelection().removeAllRanges();
+    }
+
+    function clearFields() {
+      document.getElementById('input').value = '';
+      document.getElementById('output').value = '';
+      document.getElementById('input').focus();
+    }
+    
+    // Initialize with focus on input field
+    window.onload = function() {
+      document.getElementById('input').focus();
+    };
   </script>
 </body>
 </html>
