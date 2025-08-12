@@ -1,11 +1,12 @@
 <!DOCTYPE html>
 <html lang="so">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Osmaniya Keyboard</title>
+  <meta charset="UTF-8"width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content=/>
+  <title>soo dhawoow - Osmaniya Keyboard</title>
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Osmaniya&display=swap');
+
     body {
       font-family: 'Segoe UI', Arial, sans-serif;
       background-color: #000;
@@ -19,6 +20,8 @@
       align-items: center;
       text-align: center;
     }
+
+    /* Orange corner */
     .corner {
       position: absolute;
       top: 0;
@@ -26,36 +29,42 @@
       width: 60px;
       height: 60px;
     }
+
     .corner::before,
     .corner::after {
       content: '';
       position: absolute;
-      background: #f28c28;
+      background: #f28c28; /* Orange */
     }
+
     .corner::before {
       width: 30px;
       height: 5px;
       top: 0;
       left: 0;
     }
+
     .corner::after {
       width: 5px;
       height: 30px;
       top: 0;
       left: 0;
     }
+
     h1 {
       font-size: 2.5rem;
       margin-bottom: 0.5em;
       color: #f28c28;
       text-transform: uppercase;
     }
+
     p {
       color: #ccc;
       font-size: 1rem;
       max-width: 600px;
       margin: 10px auto 20px;
     }
+
     input, textarea {
       width: 90%;
       max-width: 600px;
@@ -68,14 +77,14 @@
       font-size: 1.2rem;
       display: block;
     }
+
     #output {
       font-family: 'Noto Sans Osmaniya', 'Segoe UI', sans-serif;
       font-size: 2rem;
       background: #1a1a1a;
       color: #fefefe;
-      resize: vertical;
-      min-height: 100px;
     }
+
     button {
       background: #f28c28;
       color: #000;
@@ -84,63 +93,32 @@
       padding: 12px 24px;
       font-size: 1rem;
       cursor: pointer;
-      margin: 10px;
+      margin-top: 20px;
       transition: background 0.3s;
     }
+
     button:hover {
       background: #ffa94d;
     }
+
     .container {
       padding: 20px;
       position: relative;
       z-index: 1;
     }
-    .button-group {
-      display: flex;
-      justify-content: center;
-    }
   </style>
 </head>
 <body>
+  <!-- Top Left Orange Corner -->
   <div class="corner"></div>
+
   <div class="container">
-    <h1>Soo Dhawoow</h1>
-    <p>/p>
-    <input type="text" id="input" placeholder="Tuuri erayga..." oninput="convert()" autocomplete="off" autocapitalize="off">
+    <h1>soo dhawoow</h1>
+    <p></p>
+
+    <input type="text" id="input" placeholder="Tuuri erayga..." oninput="convert()" autocomplete="off" autocapitalize="off" />
     <textarea id="output" placeholder="𐒓𐒖𐒐𐒖𐒖𐒑" readonly></textarea>
-    <div class="button-group">
-      <button onclick="copyText()">Copy Osmaniya</button>
-      <button onclick="clearFields()">Clear</button>
-    </div>
-    <div>
-      <p>How to Write in Somali Using the Osmanya Alphabet
-Sida Loo Qoro Af-Soomaali iyadoo la adeegsanayo Farta Osmanya
-
-The Osmanya alphabet is a unique script created specifically for the Somali language. It closely matches Somali sounds, making it easier to write and read Somali words.
-Farta Osmanya waa qoraal gaar ah oo loogu talagalay af-Soomaaliga. Waxay si fiican ugu dhowdahay dhawaaqyada afka Soomaaliga, taasoo ka dhigaysa mid sahlan in erayada Soomaaliga la qoro oo la akhriyo.
-
-How to Use This Tool:
-Sida Loo Isticmaalo Qalabkan:
-
-Type any Somali word or phrase into the box labeled "Tuuri erayga..."
-Geli eray ama jumlad Soomaali ah sanduuqa qoraalka ee calaamadsan "Tuuri erayga..."
-
-The tool will automatically convert your Somali text into the Osmanya script in the box below.
-Qalabku si toos ah ayuu u beddeli doonaa qoraalkaaga Soomaali farta Osmanya ee sanduuqa hoose.
-
-To copy the Osmanya text, click the "Copy Osmania" button.
-Si aad u koobiyeyn karto qoraalka Osmanya, guji batoonka "Copy Osmania".
-
-To clear the text and start fresh, click the "Clear" button.
-Si aad qoraalka u nadiifiso oo aad markale bilowdo, guji batoonka "Clear".
-
-Example:
-Tusaale:
-Typing "soo dhawow" (which means "welcome") will display the phrase in Osmanya letters.
-Markaad qorto "soo dhawow" (oo macnaheedu yahay "soo dhawoow") waxaa laguu soo bandhigi doonaa qoraalkaas oo ku qoran farta Osmanya.
-
-</p>
-    </div>
+    <button onclick="copyText()">copy Osmaniya</button>
   </div>
 
   <script>
@@ -160,18 +138,26 @@ Markaad qorto "soo dhawow" (oo macnaheedu yahay "soo dhawoow") waxaa laguu soo b
       let i = 0;
 
       while (i < input.length) {
-        const twoChars = input.substring(i, i + 2);
-        const oneChar = input[i];
+        const char = input[i];
+        const nextChar = input[i + 1];
 
-        // Check for multi-char mappings first
-        if (mapping[twoChars]) {
-          output += mapping[twoChars];
+        if (char === 's' && nextChar === 'h') {
+          output += mapping['sh'];
           i += 2;
-        } else if (mapping[oneChar]) {
-          output += mapping[oneChar];
-          i += 1;
+        } else if (char === 'd' && nextChar === 'h') {
+          output += mapping['dh'];
+          i += 2;
+        } else if (char === 't' && nextChar === 'h') {
+          output += mapping['th'];
+          i += 2;
+        } else if (char === 'a' && nextChar === 'a') {
+          output += mapping['aa'];
+          i += 2;
+        } else if (char === 'o' && nextChar === 'o') {
+          output += mapping['oo'];
+          i += 2;
         } else {
-          output += oneChar;
+          output += mapping[char] || char;
           i += 1;
         }
       }
@@ -182,13 +168,8 @@ Markaad qorto "soo dhawow" (oo macnaheedu yahay "soo dhawoow") waxaa laguu soo b
     function copyText() {
       const textarea = document.getElementById('output');
       navigator.clipboard.writeText(textarea.value)
-        .then(() => alert('Copied!'))
-        .catch(() => alert('Failed to copy.'));
-    }
-
-    function clearFields() {
-      document.getElementById('input').value = '';
-      document.getElementById('output').value = '';
+        .then(() => alert('Kopkiyey! (Copied!)'))
+        .catch(() => alert('Waan ku guuldaraystay koobiyeenta.'));
     }
   </script>
 </body>
