@@ -167,15 +167,19 @@
     </div>
   </div>
 
-  <script>
+ <script>
+    // Mapping table for Somali Latin to Osmaniya script conversion
+    // Digraphs must be processed before single letters
     const mapping = {
+      // Digraphs first to ensure proper replacement
+      'sh': '𐒑', 'kh': '𐒅', 'dh': '𐒤', 'th': '𐒥', 'aa': '𐒧', 'oo': '𐒨',
+      // Single letters
       'a': '𐒖', 'b': '𐒍', 't': '𐒎', 'j': '𐒏', 'x': '𐒄', 
-      'kh': '𐒅', 'd': '𐒔', 'r': '𐒒', 's': '𐒈', 'sh': '𐒑', 
-      'g': '𐒐', 'f': '𐒓', 'q': '𐒕', 'c': '𐒋', 'h': '𐒗', 
-      'y': '𐒘', 'm': '𐒙', 'n': '𐒚', 'w': '𐒛', 'l': '𐒜', 
-      'k': '𐒝', 'e': '𐒞', 'i': '𐒟', 'u': '𐒠', 'o': '𐒡', 
-      'v': '𐒢', 'z': '𐒣', 'dh': '𐒤', 'th': '𐒥', "'": '𐒦', 
-      'aa': '𐒧', 'oo': '𐒨'
+      'd': '𐒔', 'r': '𐒒', 's': '𐒈', 'g': '𐒐', 'f': '𐒓', 
+      'q': '𐒕', 'c': '𐒋', 'h': '𐒗', 'y': '𐒘', 'm': '𐒙', 
+      'n': '𐒚', 'w': '𐒛', 'l': '𐒜', 'k': '𐒝', 'e': '𐒞', 
+      'i': '𐒟', 'u': '𐒠', 'o': '𐒡', 'v': '𐒢', 'z': '𐒣', 
+      "'": '𐒦'
     };
 
     function convert() {
@@ -184,23 +188,22 @@
       let i = 0;
 
       while (i < input.length) {
-        // Check for three-character combinations first
-        const threeChars = input.substring(i, i + 3);
-        // Then check for two-character combinations
-        const twoChars = input.substring(i, i + 2);
-        const oneChar = input[i];
-
-        if (mapping[threeChars]) {
-          output += mapping[threeChars];
-          i += 3;
-        } else if (mapping[twoChars]) {
-          output += mapping[twoChars];
-          i += 2;
-        } else if (mapping[oneChar]) {
-          output += mapping[oneChar];
-          i += 1;
-        } else {
-          output += oneChar;
+        // Process in order of mapping definition, which has digraphs first
+        let matched = false;
+        
+        // Try each mapping key in the order they are defined
+        for (const key in mapping) {
+          if (input.substring(i, i + key.length) === key) {
+            output += mapping[key];
+            i += key.length;
+            matched = true;
+            break;
+          }
+        }
+        
+        // If no match found, keep the character as is
+        if (!matched) {
+          output += input[i];
           i += 1;
         }
       }
