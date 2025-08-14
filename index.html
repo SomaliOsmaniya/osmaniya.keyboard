@@ -2,282 +2,313 @@
 <html lang="so">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Osmaniya Keyboard</title>
-  <style>
-    @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Osmaniya&display=swap');
-    body {
-      font-family: 'Segoe UI', Arial, sans-serif;
-      background-color: #000;
-      color: #fff;
-      margin: 0;
-      padding: 0;
-      display: flex;
-      flex-direction: column;
-      min-height: 100vh;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-    }
-    .corner {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 60px;
-      height: 60px;
-    }
-    .corner::before,
-    .corner::after {
-      content: '';
-      position: absolute;
-      background: #f28c28;
-    }
-    .corner::before {
-      width: 30px;
-      height: 5px;
-      top: 0;
-      left: 0;
-    }
-    .corner::after {
-      width: 5px;
-      height: 30px;
-      top: 0;
-      left: 0;
-    }
-    h1 {
-      font-size: 2.5rem;
-      margin-bottom: 0.5em;
-      color: #f28c28;
-      text-transform: uppercase;
-    }
-    p {
-      color: #ccc;
-      font-size: 1rem;
-      max-width: 600px;
-      margin: 10px auto 20px;
-    }
-    input, textarea {
-      width: 90%;
-      max-width: 600px;
-      padding: 14px;
-      margin: 15px auto;
-      background: #111;
-      border: 1px solid #444;
-      border-radius: 8px;
-      color: #fff;
-      font-size: 1.2rem;
-      display: block;
-    }
-    #output {
-      font-family: 'Noto Sans Osmaniya', 'Segoe UI', sans-serif;
-      font-size: 2rem;
-      background: #1a1a1a;
-      color: #fefefe;
-      resize: vertical;
-      min-height: 100px;
-    }
-    button {
-      background: #f28c28;
-      color: #000;
-      border: none;
-      border-radius: 6px;
-      padding: 12px 24px;
-      font-size: 1rem;
-      cursor: pointer;
-      margin: 10px;
-      transition: background 0.3s;
-    }
-    button:hover {
-      background: #ffa94d;
-    }
-    .container {
-      padding: 20px;
-      position: relative;
-      z-index: 1;
-    }
-    .button-group {
-      display: flex;
-      justify-content: center;
-    }
-    .instructions {
-      max-width: 800px;
-      text-align: left;
-      margin: 30px auto;
-      padding: 20px;
-      background: rgba(255, 255, 255, 0.05);
-      border-radius: 8px;
-    }
-    .instructions h2 {
-      color: #f28c28;
-      margin-top: 0;
-    }
-    .instructions p {
-      margin-bottom: 15px;
-    }
-    .bilingual {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: space-between;
-    }
-    .bilingual p {
-      flex: 1 1 45%;
-      min-width: 300px;
-    }
-  </style>
+ <title>Somali Latin ↔ Osmanya Converter</title>
+<style>
+  body {
+    background-color: black;
+    color: orange;
+    font-family: Arial, sans-serif;
+    text-align: center;
+    padding: 30px;
+  }
+  h1 {
+    font-size: 2.5em;
+    font-weight: bold;
+  }
+  p {
+    color: white;
+    font-size: 1.1em;
+    margin-bottom: 20px;
+  }
+  input, textarea {
+    width: 60%;
+    padding: 10px;
+    margin-top: 10px;
+    background: #1a1a1a;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 1em;
+  }
+  textarea {
+    height: 100px;
+    resize: vertical;
+  }
+  button {
+    margin: 10px;
+    padding: 10px 20px;
+    font-size: 1em;
+    border: none;
+    border-radius: 6px;
+    background-color: orange;
+    color: black;
+    cursor: pointer;
+  }
+  button:hover {
+    background-color: darkorange;
+  }
+  .keyboard-layout {
+    margin-top: 30px;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .keyboard-layout h3 {
+    color: orange;
+    font-size: 1.5em;
+    margin-bottom: 20px;
+  }
+  .key-row {
+    margin-bottom: 10px;
+  }
+  .key-group {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 5px;
+  }
+  .key {
+    background: #333;
+    border: 1px solid #555;
+    border-radius: 4px;
+    padding: 8px 12px;
+    margin: 2px;
+    min-width: 50px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    transition: background 0.2s;
+  }
+  .key:hover {
+    background: #444;
+  }
+  .key.long {
+    min-width: 60px;
+  }
+  .key .latin {
+    color: white;
+    font-size: 0.9em;
+    font-weight: bold;
+  }
+  .key .osmanya {
+    color: orange;
+    font-size: 1.4em;
+    margin-top: 2px;
+  }
+  .instructions {
+    color: #ccc;
+    font-size: 0.9em;
+    margin-top: 15px;
+    font-style: italic;
+  }
+  .toolbar {
+    display: flex;
+    gap: 10px;
+    margin: 15px 0;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  .toolbar button {
+    background: #444;
+    color: white;
+    border: 1px solid #666;
+    border-radius: 4px;
+    padding: 8px 16px;
+    cursor: pointer;
+    font-size: 0.9em;
+    transition: background 0.2s;
+  }
+  .toolbar button:hover {
+    background: #555;
+  }
+  .close-btn {
+    background: #d32f2f !important;
+    color: white !important;
+    font-weight: bold;
+  }
+  .close-btn:hover {
+    background: #b71c1c !important;
+  }
+  .light-mode {
+    background: white;
+    color: black;
+  }
+  .light-mode input, .light-mode textarea {
+    background: white;
+    color: black;
+    border: 1px solid #ccc;
+  }
+  .light-mode .key {
+    background: #f5f5f5;
+    border: 1px solid #ddd;
+    color: black;
+  }
+  .light-mode .key .osmanya {
+    color: #d32f2f;
+  }
+  .light-mode h1, .light-mode h3 {
+    color: #d32f2f;
+  }
+  .large-frame {
+    max-width: 1200px;
+    font-size: 1.1em;
+  }
+  .large-frame input, .large-frame textarea {
+    font-size: 1.2em;
+    padding: 15px;
+  }
+</style>
 </head>
 <body>
-  <div class="corner"></div>
-  <div class="container">
-    <h1>Soo Dhawoow</h1>
-    <p>Farta Osman Yusuf Kenadid – Qalabka Qorista Osmaniya (Osman Yusuf Kenadid Script – Osmaniya Writing Tool)</p>
-    <input type="text" id="input" placeholder="type..." oninput="convert()" autocomplete="off" autocapitalize="off">
-    <textarea id="output" placeholder="𐒓𐒖𐒐𐒖𐒖𐒑" readonly></textarea>
-    <div class="button-group">
-      <button onclick="copyText()">Copy Osmaniya</button>
-      <button onclick="clearFields()">Clear</button>
-    </div>
-    
-<div class="instructions">
-      <h2>The Osmanya Script: A Professional Guide</h2>
-      <div class="bilingual">
-        <p>The Osmanya script represents a sophisticated writing system specifically engineered for the Somali language. This meticulously designed alphabet provides precise phonetic mapping to Somali phonology, enabling efficient written communication.</p>
-        <p>Farta Osmanya waa nidaam qoraal oo si xirfad leh loogu horumariyey af-Soomaaliga. Nidaamkan qoraalka ah waxa uu si sax ah u muujiyaa dhawaaqyada af-Soomaaliga, taasoo fududeynaysa wada xiriirka qoraalka.</p>
-      </div>
-      
-      <h2>Usage Instructions</h2>
-      <div class="bilingual">
-        <p>1. Enter your Somali text in the designated input field marked "Tuuri erayga..."</p>
-        <p>1. Ku qor qoraalkaaga Soomaaliga ah goobta gelitaanka ee calaamadsan "Tuuri erayga..."</p>
-        
-        <p>2. The system will instantly render your input in the Osmanya script within the output field below.</p>
-        <p>2. Nidaamku wuxuu si toos ah ugu beddelayaa qoraalkaaga farta Osmanya ee goobta hoose.</p>
-        
-        <p>3. Select "Copy Osmanya" to transfer the converted text to your clipboard.</p>
-        <p>3. Dooro "Copy Osmanya" si aad u wareegjiso qoraalka la beddelay.</p>
-        
-        <p>4. Utilize the "Clear" function to reset both input and output fields.</p>
-        <p>4. Isticmaal shaqada "Clear" si aad dib u bilowdo labada goobood.</p>
-      </div>
-      
-      <h2>Example:</h2>
-      <div class="bilingual">
-        <p>Typing "soo dhawow" (which means "welcome") will display the phrase in Osmanya letters.</p>
-        <p>Markaad qorto "soo dhawow" (oo macnaheedu yahay "soo dhawoow") waxaa laguu soo bandhigi doonaa qoraalkaas oo ku qoran farta Osmanya.</p>
-      </div>
+
+<h1>SOO DHAWOOW</h1>
+
+<input type="text" id="inputText" placeholder="Type Somali Latin or Osmanya text...">
+<textarea id="outputText" placeholder="Converted text appears here..." readonly></textarea>
+<br>
+<div class="toolbar">
+  <button onclick="copyText()">Copy</button>
+  <button onclick="saveText()">Save</button>
+  <button onclick="addSpace()">Space</button>
+  <button onclick="toggleFrame()">Large Frame</button>
+  <button onclick="toggleLightMode()">Light Mode</button>
+  <button onclick="clearText()" class="close-btn">✕</button>
+</div>
+
+<div class="keyboard-layout">
+  <h3>Keyboard Layout Guide</h3>
+  <div class="key-row">
+    <div class="key-group">
+      <div class="key"><span class="latin">b</span><span class="osmanya">𐒁</span></div>
+      <div class="key"><span class="latin">t</span><span class="osmanya">𐒂</span></div>
+      <div class="key"><span class="latin">j</span><span class="osmanya">𐒃</span></div>
+      <div class="key"><span class="latin">x</span><span class="osmanya">𐒄</span></div>
+      <div class="key"><span class="latin">kh</span><span class="osmanya">𐒅</span></div>
+      <div class="key"><span class="latin">d</span><span class="osmanya">𐒆</span></div>
+      <div class="key"><span class="latin">r</span><span class="osmanya">𐒇</span></div>
+      <div class="key"><span class="latin">s</span><span class="osmanya">𐒈</span></div>
+      <div class="key"><span class="latin">sh</span><span class="osmanya">𐒉</span></div>
+      <div class="key"><span class="latin">dh</span><span class="osmanya">𐒊</span></div>
     </div>
   </div>
+  <div class="key-row">
+    <div class="key-group">
+      <div class="key"><span class="latin">c</span><span class="osmanya">𐒋</span></div>
+      <div class="key"><span class="latin">g</span><span class="osmanya">𐒌</span></div>
+      <div class="key"><span class="latin">f</span><span class="osmanya">𐒍</span></div>
+      <div class="key"><span class="latin">q</span><span class="osmanya">𐒎</span></div>
+      <div class="key"><span class="latin">k</span><span class="osmanya">𐒏</span></div>
+      <div class="key"><span class="latin">l</span><span class="osmanya">𐒐</span></div>
+      <div class="key"><span class="latin">m</span><span class="osmanya">𐒑</span></div>
+      <div class="key"><span class="latin">n</span><span class="osmanya">𐒒</span></div>
+      <div class="key"><span class="latin">w</span><span class="osmanya">𐒓</span></div>
+      <div class="key"><span class="latin">h</span><span class="osmanya">𐒔</span></div>
+      <div class="key"><span class="latin">y</span><span class="osmanya">𐒕</span></div>
+    </div>
+  </div>
+  <div class="key-row">
+     <div class="key-group">
+       <div class="key"><span class="latin">a</span><span class="osmanya">𐒖</span></div>
+       <div class="key"><span class="latin">e</span><span class="osmanya">𐒗</span></div>
+       <div class="key"><span class="latin">i</span><span class="osmanya">𐒘</span></div>
+       <div class="key"><span class="latin">o</span><span class="osmanya">𐒙</span></div>
+       <div class="key"><span class="latin">u</span><span class="osmanya">𐒚</span></div>
+       <div class="key long"><span class="latin">aa</span><span class="osmanya">𐒛</span></div>
+       <div class="key long"><span class="latin">ee</span><span class="osmanya">𐒜</span></div>
+       <div class="key long"><span class="latin">oo</span><span class="osmanya">𐒝</span></div>
+     </div>
+   </div>
+   <div class="key-row">
+     <div class="key-group">
+       <div class="key"><span class="latin">0</span><span class="osmanya">𐒠</span></div>
+       <div class="key"><span class="latin">1</span><span class="osmanya">𐒡</span></div>
+       <div class="key"><span class="latin">2</span><span class="osmanya">𐒢</span></div>
+       <div class="key"><span class="latin">3</span><span class="osmanya">𐒣</span></div>
+       <div class="key"><span class="latin">4</span><span class="osmanya">𐒤</span></div>
+       <div class="key"><span class="latin">5</span><span class="osmanya">𐒥</span></div>
+       <div class="key"><span class="latin">6</span><span class="osmanya">𐒦</span></div>
+       <div class="key"><span class="latin">7</span><span class="osmanya">𐒧</span></div>
+       <div class="key"><span class="latin">8</span><span class="osmanya">𐒨</span></div>
+       <div class="key"><span class="latin">9</span><span class="osmanya">𐒩</span></div>
+     </div>
+   </div>
+   <p class="instructions">Type the Latin letters and numbers above to get the corresponding Osmanya characters. Long vowels (aa, ee, oo) and digraphs (kh, sh, dh) are supported.</p>
+</div>
 
- <script>
-    // Mapping table for Somali Latin to Osmaniya script conversion
-    // Digraphs must be processed before single letters
-    const mapping = {
-      // Digraphs first to ensure proper replacement
-      'sh': '𐒑', 'kh': '𐒅', 'dh': '𐒤', 'th': '𐒥', 'aa': '𐒧', 'oo': '𐒨',
-      // Single letters
-      'a': '𐒖', 'b': '𐒍', 't': '𐒎', 'j': '𐒏', 'x': '𐒄', 
-      'd': '𐒔', 'r': '𐒒', 's': '𐒈', 'g': '𐒐', 'f': '𐒓', 
-      'q': '𐒕', 'c': '𐒋', 'h': '𐒗', 'y': '𐒘', 'm': '𐒙', 
-      'n': '𐒚', 'w': '𐒛', 'l': '𐒜', 'k': '𐒝', 'e': '𐒞', 
-      'i': '𐒟', 'u': '𐒠', 'o': '𐒡', 'v': '𐒢', 'z': '𐒣', 
-      "'": '𐒦'
-    };
+<script>
+const latinToOsmaniya = {
+  "aa": "𐒛", "ee": "𐒜", "oo": "𐒝",
+  "ii": "𐒕", "uu": "𐒓",
+  "kh": "𐒅", "sh": "𐒉", "dh": "𐒊",
+  "b": "𐒁", "t": "𐒂", "j": "𐒃", "x": "𐒄",
+  "d": "𐒆", "r": "𐒇", "s": "𐒈", "c": "𐒋",
+  "g": "𐒌", "f": "𐒍", "q": "𐒎", "k": "𐒏",
+  "l": "𐒐", "m": "𐒑", "n": "𐒒", "w": "𐒓",
+  "h": "𐒔", "y": "𐒕", "a": "𐒖", "e": "𐒗",
+  "i": "𐒘", "o": "𐒙", "u": "𐒚",
+  "0": "𐒠", "1": "𐒡", "2": "𐒢", "3": "𐒣", "4": "𐒤",
+  "5": "𐒥", "6": "𐒦", "7": "𐒧", "8": "𐒨", "9": "𐒩"
+};
+const osmaniyaToLatin = Object.fromEntries(
+  Object.entries(latinToOsmaniya).map(([latin, osm]) => [osm, latin])
+);
+function toOsmaniya(input) {
+  const s = input.normalize('NFC');
+  let out = '';
+  for (let i = 0; i < s.length;) {
+    const two = s.slice(i, i+2).toLowerCase();
+    const one = s[i].toLowerCase();
+    if (latinToOsmaniya[two]) { out += latinToOsmaniya[two]; i += 2; continue; }
+    if (latinToOsmaniya[one]) { out += latinToOsmaniya[one]; i++; continue; }
+    out += s[i]; i++;
+  }
+  return out;
+}
+function fromOsmaniya(input) {
+  let out = '';
+  for (const ch of input) {
+    if (osmaniyaToLatin[ch]) out += osmaniyaToLatin[ch];
+    else out += ch;
+  }
+  return out;
+}
+document.getElementById('inputText').addEventListener('input', function() {
+  const text = this.value;
+  const hasOsm = [...text].some(ch => ch >= '𐒀' && ch <= '𐒯');
+  document.getElementById('outputText').value = hasOsm ? fromOsmaniya(text) : toOsmaniya(text);
+});
+function copyText() {
+  const output = document.getElementById('outputText');
+  output.select();
+  document.execCommand('copy');
+}
+function clearText() {
+  document.getElementById('inputText').value = '';
+  document.getElementById('outputText').value = '';
+}
+function saveText() {
+  const text = document.getElementById('outputText').value;
+  const blob = new Blob([text], { type: 'text/plain' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = 'osmanya_text.txt';
+  a.click();
+  URL.revokeObjectURL(url);
+}
+function addSpace() {
+  const input = document.getElementById('inputText');
+  input.value += ' ';
+  input.dispatchEvent(new Event('input'));
+  input.focus();
+}
+function toggleFrame() {
+  document.body.classList.toggle('large-frame');
+}
+function toggleLightMode() {
+  document.body.classList.toggle('light-mode');
+}
+</script>
 
-    function convert() {
-      const input = document.getElementById('input').value.toLowerCase();
-      let output = '';
-      let i = 0;
-
-      while (i < input.length) {
-        // Process in order of mapping definition, which has digraphs first
-        let matched = false;
-        
-        // Try each mapping key in the order they are defined
-        for (const key in mapping) {
-          if (input.substring(i, i + key.length) === key) {
-            output += mapping[key];
-            i += key.length;
-            matched = true;
-            break;
-          }
-        }
-        
-        // If no match found, keep the character as is
-        if (!matched) {
-          output += input[i];
-          i += 1;
-        }
-      }
-
-      document.getElementById('output').value = output;
-    }
-
-    function copyText() {
-      const textarea = document.getElementById('output');
-      if (textarea.value.trim() === '') {
-        alert('Nothing to copy. Please type some text first.');
-        return;
-      }
-      
-      // Fallback for browsers that don't support clipboard API
-      try {
-        // Try to use the clipboard API
-        navigator.clipboard.writeText(textarea.value)
-          .then(() => showCopyMessage())
-          .catch(err => fallbackCopy(textarea));
-      } catch (err) {
-        // If clipboard API is not available, use fallback
-        fallbackCopy(textarea);
-      }
-    }
-    
-    function showCopyMessage() {
-      // Create a temporary element for the success message
-      const msg = document.createElement('div');
-      msg.textContent = 'Copied!';
-      msg.style.position = 'fixed';
-      msg.style.top = '20px';
-      msg.style.left = '50%';
-      msg.style.transform = 'translateX(-50%)';
-      msg.style.padding = '10px 20px';
-      msg.style.background = '#f28c28';
-      msg.style.color = '#000';
-      msg.style.borderRadius = '4px';
-      msg.style.zIndex = '1000';
-      document.body.appendChild(msg);
-      
-      // Remove the message after 2 seconds
-      setTimeout(() => {
-        document.body.removeChild(msg);
-      }, 2000);
-    }
-    
-    function fallbackCopy(textarea) {
-      // Fallback method using selection and execCommand
-      textarea.select();
-      try {
-        const successful = document.execCommand('copy');
-        if (successful) {
-          showCopyMessage();
-        } else {
-          alert('Failed to copy. Please try again.');
-        }
-      } catch (err) {
-        alert('Failed to copy. Please try again.');
-      }
-      // Deselect the text
-      window.getSelection().removeAllRanges();
-    }
-
-    function clearFields() {
-      document.getElementById('input').value = '';
-      document.getElementById('output').value = '';
-      document.getElementById('input').focus();
-    }
-    
-    // Initialize with focus on input field
-    window.onload = function() {
-      document.getElementById('input').focus();
-    };
-  </script>
 </body>
 </html>
