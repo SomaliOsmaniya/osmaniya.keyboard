@@ -3,124 +3,118 @@
 <head>
   <meta charset="UTF-8">
  <title>Somali Latin ↔ Osmanya Converter</title>
-<style>
+ <style>
+  /* Enhanced glassy body */
   body {
-    background-color: black;
-    color: orange;
-    font-family: Arial, sans-serif;
+    background: linear-gradient(135deg, 
+      rgba(0, 0, 0, 0.95) 0%,
+      rgba(10, 10, 15, 0.98) 50%,
+      rgba(0, 0, 0, 0.95) 100%);
+    color: #ffffff;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     text-align: center;
     padding: 30px;
-  }
-  h1 {
-    font-size: 2.5em;
-    font-weight: bold;
-  }
-  p {
-    color: white;
-    font-size: 1.1em;
-    margin-bottom: 20px;
-  }
-  input, textarea {
-    width: 60%;
-    padding: 10px;
-    margin-top: 10px;
-    background: #1a1a1a;
-    color: white;
-    border: none;
-    border-radius: 6px;
-    font-size: 1em;
-  }
-  textarea {
-    height: 100px;
-    resize: vertical;
-  }
-  button {
-    margin: 10px;
-    padding: 10px 20px;
-    font-size: 1em;
-    border: none;
-    border-radius: 6px;
-    background-color: orange;
-    color: black;
-    cursor: pointer;
-  }
-  button:hover {
-    background-color: darkorange;
-  }
-  .keyboard-layout {
-    margin-top: 30px;
-    max-width: 800px;
-    margin-left: auto;
-    margin-right: auto;
-  }
-  .keyboard-layout h3 {
-    color: orange;
-    font-size: 1.5em;
-    margin-bottom: 20px;
-  }
-  .key-row {
-    margin-bottom: 10px;
-  }
-  .key-group {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 5px;
-  }
-  .key {
-    background: #333;
-    border: 1px solid #555;
-    border-radius: 4px;
-    padding: 8px 12px;
-    margin: 2px;
-    min-width: 50px;
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    transition: background 0.2s;
-  }
-  .key:hover {
-    background: #444;
-  }
-  .key.long {
-    min-width: 60px;
-  }
-  .key .latin {
-    color: white;
-    font-size: 0.9em;
-    font-weight: bold;
-  }
-  .key .osmanya {
-    color: orange;
-    font-size: 1.4em;
-    margin-top: 2px;
-  }
-  .instructions {
-    color: #ccc;
-    font-size: 0.9em;
-    margin-top: 15px;
-    font-style: italic;
-  }
-  /* Toolbar Styles - Enhanced Glassy Dark Design */
-  .toolbar {
-    display: flex;
-    gap: 15px;
-    margin: 20px 0;
-    justify-content: center;
-    flex-wrap: wrap;
-    background: rgba(0, 0, 0, 0.8);
-    backdrop-filter: blur(25px);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 16px;
-    padding: 20px;
-    box-shadow: 
-      inset 0 1px 0 rgba(255, 255, 255, 0.1),
-      0 8px 32px rgba(0, 0, 0, 0.4),
-      0 4px 16px rgba(0, 0, 0, 0.2);
+    min-height: 100vh;
+    backdrop-filter: blur(20px);
     position: relative;
-    overflow: hidden;
+    overflow-x: hidden;
   }
   
+  /* Glass overlay for body */
+  body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, 
+      rgba(255, 255, 255, 0.05) 0%,
+      rgba(255, 255, 255, 0.02) 25%,
+      rgba(0, 0, 0, 0.1) 75%,
+      rgba(0, 0, 0, 0.2) 100%);
+    pointer-events: none;
+    z-index: -1;
+  }
+  
+  /* Enhanced glassy title */
+  h1 {
+    font-size: 2.8em;
+    font-weight: 700;
+    background: linear-gradient(135deg, 
+      rgba(255, 107, 53, 1) 0%,
+      rgba(255, 140, 80, 0.9) 50%,
+      rgba(255, 107, 53, 1) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-shadow: 0 4px 8px rgba(0, 0, 0, 0.8);
+    margin-bottom: 30px;
+    position: relative;
+    letter-spacing: 2px;
+  }
+  
+  /* Enhanced glassy paragraphs */
+  p {
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 1.1em;
+    margin-bottom: 20px;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(10px);
+    padding: 10px;
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+  
+  /* Enhanced glassy input and textarea */
+  input, textarea {
+    width: 70%;
+    padding: 16px 20px;
+    margin: 12px 0;
+    background: rgba(0, 0, 0, 0.85);
+    color: #ffffff;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    border-radius: 16px;
+    font-size: 1.1em;
+    backdrop-filter: blur(40px) saturate(180%);
+    box-shadow: 
+      inset 0 2px 0 rgba(255, 255, 255, 0.2),
+      inset 0 -2px 0 rgba(0, 0, 0, 0.6),
+      0 8px 32px rgba(0, 0, 0, 0.8),
+      0 4px 16px rgba(0, 0, 0, 0.6),
+      0 2px 8px rgba(0, 0, 0, 0.4);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    outline: none;
+    font-family: inherit;
+  }
+  
+  /* Enhanced glassy toolbar */
+  .toolbar {
+    background: rgba(0, 0, 0, 0.9);
+    border: 2px solid rgba(255, 255, 255, 0.15);
+    border-radius: 20px;
+    padding: 20px 25px;
+    margin: 25px auto;
+    max-width: 800px;
+    backdrop-filter: blur(50px) saturate(200%);
+    box-shadow: 
+      inset 0 2px 0 rgba(255, 255, 255, 0.2),
+      inset 0 -2px 0 rgba(0, 0, 0, 0.7),
+      0 15px 60px rgba(0, 0, 0, 0.9),
+      0 8px 30px rgba(0, 0, 0, 0.7),
+      0 4px 15px rgba(0, 0, 0, 0.5);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+  
+  /* Enhanced glass overlay for toolbar */
   .toolbar::before {
     content: '';
     position: absolute;
@@ -129,41 +123,55 @@
     right: 0;
     bottom: 0;
     background: linear-gradient(135deg, 
-      rgba(255, 255, 255, 0.08) 0%, 
-      rgba(255, 255, 255, 0.02) 50%, 
-      rgba(0, 0, 0, 0.1) 100%);
-    border-radius: 16px;
+      rgba(255, 255, 255, 0.18) 0%,
+      rgba(255, 255, 255, 0.10) 25%,
+      rgba(255, 255, 255, 0.05) 50%,
+      rgba(0, 0, 0, 0.1) 75%,
+      rgba(0, 0, 0, 0.3) 100%);
+    border-radius: 20px;
     pointer-events: none;
+    opacity: 0.9;
   }
   
+  /* Enhanced toolbar hover */
   .toolbar:hover {
-    border-color: rgba(255, 255, 255, 0.15);
+    background: rgba(0, 0, 0, 0.95);
+    border-color: rgba(255, 255, 255, 0.35);
+    backdrop-filter: blur(60px) saturate(220%);
     box-shadow: 
-      inset 0 1px 0 rgba(255, 255, 255, 0.12),
-      0 12px 40px rgba(0, 0, 0, 0.5),
-      0 6px 20px rgba(0, 0, 0, 0.3);
-    transform: translateY(-2px);
-    transition: all 0.3s ease;
+      inset 0 2px 0 rgba(255, 255, 255, 0.35),
+      inset 0 -2px 0 rgba(0, 0, 0, 0.8),
+      0 20px 80px rgba(0, 0, 0, 0.95),
+      0 10px 40px rgba(0, 0, 0, 0.8),
+      0 5px 20px rgba(0, 0, 0, 0.6);
+    transform: translateY(-4px);
   }
   
+  /* Enhanced toolbar buttons */
   .toolbar button {
-    background: rgba(0, 0, 0, 0.6);
+    padding: 12px 18px;
+    background: rgba(0, 0, 0, 0.8);
     color: #ffffff;
-    border: 1px solid rgba(255, 255, 255, 0.15);
-    border-radius: 10px;
-    padding: 12px 20px;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    border-radius: 12px;
+    font-size: 0.95em;
+    font-weight: 600;
     cursor: pointer;
-    font-size: 0.9em;
-    font-weight: 500;
-    backdrop-filter: blur(15px);
+    backdrop-filter: blur(30px);
     box-shadow: 
-      inset 0 1px 0 rgba(255, 255, 255, 0.1),
-      0 4px 15px rgba(0, 0, 0, 0.3);
-    transition: all 0.3s ease;
+      inset 0 1px 0 rgba(255, 255, 255, 0.15),
+      inset 0 -1px 0 rgba(0, 0, 0, 0.6),
+      0 6px 20px rgba(0, 0, 0, 0.7),
+      0 3px 10px rgba(0, 0, 0, 0.5);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     position: relative;
-    z-index: 1;
+    overflow: hidden;
+    min-width: 80px;
+    text-align: center;
+    letter-spacing: 0.5px;
   }
   
+  /* Glass overlay for buttons */
   .toolbar button::before {
     content: '';
     position: absolute;
@@ -171,55 +179,141 @@
     left: 0;
     right: 0;
     bottom: 0;
-    background: linear-gradient(135deg, 
-      rgba(255, 255, 255, 0.05) 0%,
-      rgba(255, 255, 255, 0.02) 100%);
-    border-radius: 10px;
-    opacity: 0;
-    transition: opacity 0.3s ease;
+    background: linear-gradient(135deg,
+      rgba(255, 255, 255, 0.12) 0%,
+      rgba(255, 255, 255, 0.06) 50%,
+      rgba(0, 0, 0, 0.1) 100%);
+    border-radius: 12px;
     pointer-events: none;
+    opacity: 0.8;
+    transition: opacity 0.3s ease;
   }
   
+  /* Enhanced button hover effects */
   .toolbar button:hover {
-    background: rgba(0, 0, 0, 0.8);
-    border-color: rgba(255, 107, 53, 0.4);
+    background: rgba(255, 107, 53, 0.25);
+    border-color: rgba(255, 107, 53, 0.5);
+    color: #ffffff;
+    backdrop-filter: blur(35px);
     box-shadow: 
-      inset 0 1px 0 rgba(255, 255, 255, 0.15),
+      inset 0 1px 0 rgba(255, 255, 255, 0.25),
+      inset 0 -1px 0 rgba(0, 0, 0, 0.7),
+      0 0 30px rgba(255, 107, 53, 0.4),
       0 0 20px rgba(255, 107, 53, 0.2),
-      0 6px 20px rgba(0, 0, 0, 0.4);
-    transform: translateY(-1px);
+      0 0 10px rgba(255, 107, 53, 0.1),
+      0 10px 25px rgba(0, 0, 0, 0.8),
+      0 5px 12px rgba(0, 0, 0, 0.6);
+    transform: translateY(-3px) scale(1.05);
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8);
   }
   
   .toolbar button:hover::before {
     opacity: 1;
   }
   
-  .close-btn {
-    background: rgba(211, 47, 47, 0.8) !important;
-    border-color: rgba(255, 255, 255, 0.2) !important;
+  /* Enhanced close button */
+  .toolbar .close-btn {
+    background: rgba(220, 53, 69, 0.3);
+    border-color: rgba(220, 53, 69, 0.5);
+    font-weight: bold;
+    font-size: 1.2em;
   }
   
-  .close-btn:hover {
-    background: rgba(183, 28, 28, 0.9) !important;
+  .toolbar .close-btn:hover {
+    background: rgba(220, 53, 69, 0.5);
+    border-color: rgba(220, 53, 69, 0.7);
     box-shadow: 
-      inset 0 1px 0 rgba(255, 255, 255, 0.15),
-      0 0 20px rgba(211, 47, 47, 0.3),
-      0 6px 20px rgba(0, 0, 0, 0.4) !important;
+      inset 0 1px 0 rgba(255, 255, 255, 0.25),
+      inset 0 -1px 0 rgba(0, 0, 0, 0.7),
+      0 0 30px rgba(220, 53, 69, 0.5),
+      0 0 20px rgba(220, 53, 69, 0.3),
+      0 0 10px rgba(220, 53, 69, 0.2),
+      0 10px 25px rgba(0, 0, 0, 0.8),
+      0 5px 12px rgba(0, 0, 0, 0.6);
   }
+  
+  /* Keyboard Layout */
+  .keyboard-layout {
+    background: rgba(0, 0, 0, 0.9);
+    border: 2px solid rgba(255, 255, 255, 0.15);
+    border-radius: 20px;
+    padding: 25px;
+    margin: 30px auto;
+    max-width: 900px;
+    backdrop-filter: blur(50px) saturate(200%);
+    box-shadow: 
+      inset 0 2px 0 rgba(255, 255, 255, 0.2),
+      inset 0 -2px 0 rgba(0, 0, 0, 0.7),
+      0 15px 60px rgba(0, 0, 0, 0.9),
+      0 8px 30px rgba(0, 0, 0, 0.7);
+  }
+  
+  .key-row {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin-bottom: 8px;
+    flex-wrap: wrap;
+  }
+  
+  .key {
+    background: rgba(255, 255, 255, 0.9);
+    border: 2px solid rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+    padding: 8px;
+    min-width: 50px;
+    height: 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(20px);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+  }
+  
+  .key:hover {
+    background: rgba(255, 107, 53, 0.2);
+    border-color: rgba(255, 107, 53, 0.5);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+  }
+  
+  .key .latin {
+    font-size: 0.8em;
+    color: #333;
+    font-weight: 600;
+  }
+  
+  .key .osmanya {
+    font-size: 1.2em;
+    color: #d32f2f;
+    font-weight: bold;
+    margin-top: 2px;
+  }
+  
+  /* Light mode adjustments */
   .light-mode {
-    background: white;
-    color: black;
+    background: linear-gradient(135deg, 
+      rgba(245, 245, 250, 0.95) 0%,
+      rgba(250, 250, 255, 0.98) 50%,
+      rgba(245, 245, 250, 0.95) 100%);
+    color: #333;
   }
+  
   .light-mode input, .light-mode textarea {
-    background: white;
-    color: black;
-    border: 1px solid #ccc;
+    background: rgba(255, 255, 255, 0.9);
+    color: #333;
+    border-color: rgba(0, 0, 0, 0.2);
   }
+  
   .light-mode .key {
-    background: #f5f5f5;
-    border: 1px solid #ddd;
-    color: black;
+    background: rgba(255, 255, 255, 0.8);
+    border-color: rgba(0, 0, 0, 0.2);
+    color: #333;
   }
+  
   .light-mode .key .osmanya {
     color: #d32f2f;
   }
@@ -234,6 +328,53 @@
     font-size: 1.2em;
     padding: 15px;
   }
+  
+  /* Enhanced responsive design */
+  @media (max-width: 768px) {
+    body {
+      padding: 20px;
+    }
+    
+    h1 {
+      font-size: 2.2em;
+    }
+    
+    input, textarea {
+      width: 90%;
+      padding: 12px 16px;
+      font-size: 1em;
+    }
+    
+    .toolbar {
+      padding: 16px 20px;
+      gap: 8px;
+    }
+    
+    .toolbar button {
+      padding: 10px 14px;
+      font-size: 0.85em;
+      min-width: 70px;
+    }
+    
+    .keyboard-layout {
+      padding: 16px 20px;
+      margin: 15px auto;
+    }
+    
+    .key {
+      min-width: 35px;
+      height: 35px;
+      padding: 6px 8px;
+    }
+    
+    .key .latin {
+      font-size: 0.7em;
+    }
+    
+    .key .osmanya {
+      font-size: 0.8em;
+    }
+  }
 </style>
 </head>
 <body>
@@ -244,72 +385,186 @@
 <textarea id="outputText" placeholder="Converted text appears here..." readonly></textarea>
 <br>
 <div class="toolbar">
-  <button onclick="copyText()">Copy</button>
-  <button onclick="saveText()">Save</button>
-  <button onclick="addSpace()">Space</button>
-  <button onclick="toggleFrame()">Large Frame</button>
-  <button onclick="toggleLightMode()">Light Mode</button>
+  <button onclick="copyText()">copy</button>
+  <button onclick="saveText()">save</button>
+  <button onclick="addSpace()">space</button>
+  <button onclick="toggleFrame()">large frame</button>
+  <button onclick="toggleLightMode()">light mode</button>
   <button onclick="clearText()" class="close-btn">✕</button>
 </div>
 
 <div class="keyboard-layout">
-  <h3>Keyboard Layout Guide</h3>
+  <!-- First row: consonants -->
   <div class="key-row">
-    <div class="key-group">
-      <div class="key"><span class="latin">b</span><span class="osmanya">𐒁</span></div>
-      <div class="key"><span class="latin">t</span><span class="osmanya">𐒂</span></div>
-      <div class="key"><span class="latin">j</span><span class="osmanya">𐒃</span></div>
-      <div class="key"><span class="latin">x</span><span class="osmanya">𐒄</span></div>
-      <div class="key"><span class="latin">kh</span><span class="osmanya">𐒅</span></div>
-      <div class="key"><span class="latin">d</span><span class="osmanya">𐒆</span></div>
-      <div class="key"><span class="latin">r</span><span class="osmanya">𐒇</span></div>
-      <div class="key"><span class="latin">s</span><span class="osmanya">𐒈</span></div>
-      <div class="key"><span class="latin">sh</span><span class="osmanya">𐒉</span></div>
-      <div class="key"><span class="latin">dh</span><span class="osmanya">𐒊</span></div>
+    <div class="key" onclick="insertChar('b')">
+      <div class="latin">b</div>
+      <div class="osmanya">𐒁</div>
+    </div>
+    <div class="key" onclick="insertChar('t')">
+      <div class="latin">t</div>
+      <div class="osmanya">𐒂</div>
+    </div>
+    <div class="key" onclick="insertChar('j')">
+      <div class="latin">j</div>
+      <div class="osmanya">𐒃</div>
+    </div>
+    <div class="key" onclick="insertChar('x')">
+      <div class="latin">x</div>
+      <div class="osmanya">𐒄</div>
+    </div>
+    <div class="key" onclick="insertChar('kh')">
+      <div class="latin">kh</div>
+      <div class="osmanya">𐒅</div>
+    </div>
+    <div class="key" onclick="insertChar('d')">
+      <div class="latin">d</div>
+      <div class="osmanya">𐒆</div>
+    </div>
+    <div class="key" onclick="insertChar('r')">
+      <div class="latin">r</div>
+      <div class="osmanya">𐒇</div>
+    </div>
+    <div class="key" onclick="insertChar('s')">
+      <div class="latin">s</div>
+      <div class="osmanya">𐒈</div>
+    </div>
+    <div class="key" onclick="insertChar('sh')">
+      <div class="latin">sh</div>
+      <div class="osmanya">𐒉</div>
+    </div>
+    <div class="key" onclick="insertChar('dh')">
+      <div class="latin">dh</div>
+      <div class="osmanya">𐒊</div>
     </div>
   </div>
+  
+  <!-- Second row: more consonants -->
   <div class="key-row">
-    <div class="key-group">
-      <div class="key"><span class="latin">c</span><span class="osmanya">𐒋</span></div>
-      <div class="key"><span class="latin">g</span><span class="osmanya">𐒌</span></div>
-      <div class="key"><span class="latin">f</span><span class="osmanya">𐒍</span></div>
-      <div class="key"><span class="latin">q</span><span class="osmanya">𐒎</span></div>
-      <div class="key"><span class="latin">k</span><span class="osmanya">𐒏</span></div>
-      <div class="key"><span class="latin">l</span><span class="osmanya">𐒐</span></div>
-      <div class="key"><span class="latin">m</span><span class="osmanya">𐒑</span></div>
-      <div class="key"><span class="latin">n</span><span class="osmanya">𐒒</span></div>
-      <div class="key"><span class="latin">w</span><span class="osmanya">𐒓</span></div>
-      <div class="key"><span class="latin">h</span><span class="osmanya">𐒔</span></div>
-      <div class="key"><span class="latin">y</span><span class="osmanya">𐒕</span></div>
+    <div class="key" onclick="insertChar('c')">
+      <div class="latin">c</div>
+      <div class="osmanya">𐒋</div>
+    </div>
+    <div class="key" onclick="insertChar('g')">
+      <div class="latin">g</div>
+      <div class="osmanya">𐒌</div>
+    </div>
+    <div class="key" onclick="insertChar('f')">
+      <div class="latin">f</div>
+      <div class="osmanya">𐒍</div>
+    </div>
+    <div class="key" onclick="insertChar('q')">
+      <div class="latin">q</div>
+      <div class="osmanya">𐒎</div>
+    </div>
+    <div class="key" onclick="insertChar('k')">
+      <div class="latin">k</div>
+      <div class="osmanya">𐒏</div>
+    </div>
+    <div class="key" onclick="insertChar('l')">
+      <div class="latin">l</div>
+      <div class="osmanya">𐒐</div>
+    </div>
+    <div class="key" onclick="insertChar('m')">
+      <div class="latin">m</div>
+      <div class="osmanya">𐒑</div>
+    </div>
+    <div class="key" onclick="insertChar('n')">
+      <div class="latin">n</div>
+      <div class="osmanya">𐒒</div>
+    </div>
+    <div class="key" onclick="insertChar('w')">
+      <div class="latin">w</div>
+      <div class="osmanya">𐒓</div>
+    </div>
+    <div class="key" onclick="insertChar('h')">
+      <div class="latin">h</div>
+      <div class="osmanya">𐒔</div>
+    </div>
+    <div class="key" onclick="insertChar('y')">
+      <div class="latin">y</div>
+      <div class="osmanya">𐒕</div>
     </div>
   </div>
+  
+  <!-- Third row: vowels -->
   <div class="key-row">
-     <div class="key-group">
-       <div class="key"><span class="latin">a</span><span class="osmanya">𐒖</span></div>
-       <div class="key"><span class="latin">e</span><span class="osmanya">𐒗</span></div>
-       <div class="key"><span class="latin">i</span><span class="osmanya">𐒘</span></div>
-       <div class="key"><span class="latin">o</span><span class="osmanya">𐒙</span></div>
-       <div class="key"><span class="latin">u</span><span class="osmanya">𐒚</span></div>
-       <div class="key long"><span class="latin">aa</span><span class="osmanya">𐒛</span></div>
-       <div class="key long"><span class="latin">ee</span><span class="osmanya">𐒜</span></div>
-       <div class="key long"><span class="latin">oo</span><span class="osmanya">𐒝</span></div>
-     </div>
-   </div>
-   <div class="key-row">
-     <div class="key-group">
-       <div class="key"><span class="latin">0</span><span class="osmanya">𐒠</span></div>
-       <div class="key"><span class="latin">1</span><span class="osmanya">𐒡</span></div>
-       <div class="key"><span class="latin">2</span><span class="osmanya">𐒢</span></div>
-       <div class="key"><span class="latin">3</span><span class="osmanya">𐒣</span></div>
-       <div class="key"><span class="latin">4</span><span class="osmanya">𐒤</span></div>
-       <div class="key"><span class="latin">5</span><span class="osmanya">𐒥</span></div>
-       <div class="key"><span class="latin">6</span><span class="osmanya">𐒦</span></div>
-       <div class="key"><span class="latin">7</span><span class="osmanya">𐒧</span></div>
-       <div class="key"><span class="latin">8</span><span class="osmanya">𐒨</span></div>
-       <div class="key"><span class="latin">9</span><span class="osmanya">𐒩</span></div>
-     </div>
-   </div>
-   <p class="instructions">Type the Latin letters and numbers above to get the corresponding Osmanya characters. Long vowels (aa, ee, oo) and digraphs (kh, sh, dh) are supported.</p>
+    <div class="key" onclick="insertChar('a')">
+      <div class="latin">a</div>
+      <div class="osmanya">𐒖</div>
+    </div>
+    <div class="key" onclick="insertChar('e')">
+      <div class="latin">e</div>
+      <div class="osmanya">𐒗</div>
+    </div>
+    <div class="key" onclick="insertChar('i')">
+      <div class="latin">i</div>
+      <div class="osmanya">𐒘</div>
+    </div>
+    <div class="key" onclick="insertChar('o')">
+      <div class="latin">o</div>
+      <div class="osmanya">𐒙</div>
+    </div>
+    <div class="key" onclick="insertChar('u')">
+      <div class="latin">u</div>
+      <div class="osmanya">𐒚</div>
+    </div>
+    <div class="key" onclick="insertChar('aa')">
+      <div class="latin">aa</div>
+      <div class="osmanya">𐒛</div>
+    </div>
+    <div class="key" onclick="insertChar('ee')">
+      <div class="latin">ee</div>
+      <div class="osmanya">𐒜</div>
+    </div>
+    <div class="key" onclick="insertChar('oo')">
+      <div class="latin">oo</div>
+      <div class="osmanya">𐒝</div>
+    </div>
+  </div>
+  
+  <!-- Fourth row: numbers -->
+  <div class="key-row">
+    <div class="key" onclick="insertChar('0')">
+      <div class="latin">0</div>
+      <div class="osmanya">𐒠</div>
+    </div>
+    <div class="key" onclick="insertChar('1')">
+      <div class="latin">1</div>
+      <div class="osmanya">𐒡</div>
+    </div>
+    <div class="key" onclick="insertChar('2')">
+      <div class="latin">2</div>
+      <div class="osmanya">𐒢</div>
+    </div>
+    <div class="key" onclick="insertChar('3')">
+      <div class="latin">3</div>
+      <div class="osmanya">𐒣</div>
+    </div>
+    <div class="key" onclick="insertChar('4')">
+      <div class="latin">4</div>
+      <div class="osmanya">𐒤</div>
+    </div>
+    <div class="key" onclick="insertChar('5')">
+      <div class="latin">5</div>
+      <div class="osmanya">𐒥</div>
+    </div>
+    <div class="key" onclick="insertChar('6')">
+      <div class="latin">6</div>
+      <div class="osmanya">𐒦</div>
+    </div>
+    <div class="key" onclick="insertChar('7')">
+      <div class="latin">7</div>
+      <div class="osmanya">𐒧</div>
+    </div>
+    <div class="key" onclick="insertChar('8')">
+      <div class="latin">8</div>
+      <div class="osmanya">𐒨</div>
+    </div>
+    <div class="key" onclick="insertChar('9')">
+      <div class="latin">9</div>
+      <div class="osmanya">𐒩</div>
+    </div>
+  </div>
 </div>
 
 <script>
@@ -326,9 +581,11 @@ const latinToOsmaniya = {
   "0": "𐒠", "1": "𐒡", "2": "𐒢", "3": "𐒣", "4": "𐒤",
   "5": "𐒥", "6": "𐒦", "7": "𐒧", "8": "𐒨", "9": "𐒩"
 };
+
 const osmaniyaToLatin = Object.fromEntries(
   Object.entries(latinToOsmaniya).map(([latin, osm]) => [osm, latin])
 );
+
 function toOsmaniya(input) {
   const s = input.normalize('NFC');
   let out = '';
@@ -341,6 +598,7 @@ function toOsmaniya(input) {
   }
   return out;
 }
+
 function fromOsmaniya(input) {
   let out = '';
   for (const ch of input) {
@@ -349,20 +607,31 @@ function fromOsmaniya(input) {
   }
   return out;
 }
+
+function insertChar(char) {
+  const input = document.getElementById('inputText');
+  input.value += char;
+  input.dispatchEvent(new Event('input'));
+  input.focus();
+}
+
 document.getElementById('inputText').addEventListener('input', function() {
   const text = this.value;
   const hasOsm = [...text].some(ch => ch >= '𐒀' && ch <= '𐒯');
   document.getElementById('outputText').value = hasOsm ? fromOsmaniya(text) : toOsmaniya(text);
 });
+
 function copyText() {
   const output = document.getElementById('outputText');
   output.select();
   document.execCommand('copy');
 }
+
 function clearText() {
   document.getElementById('inputText').value = '';
   document.getElementById('outputText').value = '';
 }
+
 function saveText() {
   const text = document.getElementById('outputText').value;
   const blob = new Blob([text], { type: 'text/plain' });
@@ -373,15 +642,18 @@ function saveText() {
   a.click();
   URL.revokeObjectURL(url);
 }
+
 function addSpace() {
   const input = document.getElementById('inputText');
   input.value += ' ';
   input.dispatchEvent(new Event('input'));
   input.focus();
 }
+
 function toggleFrame() {
   document.body.classList.toggle('large-frame');
 }
+
 function toggleLightMode() {
   document.body.classList.toggle('light-mode');
 }
